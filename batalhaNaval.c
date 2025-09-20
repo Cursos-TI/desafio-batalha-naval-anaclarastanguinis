@@ -1,14 +1,60 @@
 #include <stdio.h>
 
-// Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
-
-int main() {
+int main() {    
+    
     // Nível Novato - Posicionamento dos Navios
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
+    
+    char coluna[10] = {'A','B','C','D','E','F','G','H','I','J'}; //array de strings para as colunas
+    char tabuleiro[10][10]; //matriz do tabuleiro
+    char navio_vertical[3] = {'3','3','3'}; //definindo tamanho do navio vertical e sua representação na matriz
+    int coluna_navio_vertical = 5, linha_navio_vertical = 3; //definindo posição do navio vertical (coluna fixa, linha variável)    
+    char navio_horizontal[3] = {'3','3','3'}; //definindo tamanho do navio horizontal e sua representação    
+    int coluna_navio_horizontal = 7, linha_navio_horizontal = 8; //definindo posição do navio horizontal (coluna variável, linha fixa)
+    
+    printf("     TABULEIRO DE BATALHA NAVAL \n"); //printando o enunciado    
+    printf("   "); //espaço para a coluna de números
+
+    for (int i = 0; i < 10; i++) { //exibindo cabeçalho de colunas
+        printf(" %c ", coluna[i]);
+    }
+    printf("\n");
+    
+    //definindo '0' como representação inicial para todas as linhas e colunas (água)
+    for (int linha = 0; linha < 10; linha++) { 
+        for (int coluna = 0; coluna < 10; coluna++) {
+            tabuleiro[linha][coluna] = '0'; 
+        }
+    }
+
+    //definindo posição do navio vertical
+    for (int linha = 0; linha < 3; linha++) {  
+        tabuleiro[linha_navio_vertical + linha][coluna_navio_vertical] = navio_vertical[linha];
+    }
+
+    //definindo posição do navio horizontal
+    for (int coluna = 0; coluna < 3; coluna++) {  
+        tabuleiro[linha_navio_horizontal][coluna_navio_horizontal + coluna] = navio_horizontal[coluna];
+    }
+
+    //loop externo printa o número da linha e entra no interno,
+    //loop interno imprime o valor de '0' na linha toda até sua condição se tornar falsa e encerra;
+    //loop externo se completa pulando a linha e começa de novo até sua condiçãi se tornar falsa
+    for (int linhas = 0; linhas < 10; linhas++) { 
+        printf("%2d ", linhas + 1); 
+        for (int colunas = 0; colunas < 10; colunas++) { 
+            printf(" %c ", tabuleiro[linhas][colunas]); 
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+     
+
+    
+    
+
+
 
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
@@ -36,5 +82,4 @@ int main() {
     // 1 1 1 1 1
     // 0 0 1 0 0
 
-    return 0;
-}
+
