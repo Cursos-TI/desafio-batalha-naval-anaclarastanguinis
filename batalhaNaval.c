@@ -36,33 +36,34 @@ int main() {
     }
 
     //definindo posição do navio vertical
-    for (int linha = 0; linha < 3; linha++) {  
+    if (linha_navio_vertical + 2 < 10) {
+        for (int linha = 0; linha < 3; linha++) {  
         tabuleiro[linha_navio_vertical + linha][coluna_navio_vertical] = navio_vertical[linha];
+        }
     }
 
     //definindo posição do navio horizontal
-    for (int coluna = 0; coluna < 3; coluna++) {  
+    if (coluna_navio_horizontal + 2 < 10) {
+        for (int coluna = 0; coluna < 3; coluna++) {  
         tabuleiro[linha_navio_horizontal][coluna_navio_horizontal + coluna] = navio_horizontal[coluna];
-    }
-
-    //definindo posição do navio diagonal 1
-    for (int i = 0; i < 3; i++) {
-        if (linha_navio_diagonal1 == coluna_navio_diagonal1) {
-            tabuleiro[linha_navio_diagonal1][coluna_navio_diagonal1] = navio_diagonal1[i];
-            linha_navio_diagonal1++;
-            coluna_navio_diagonal1++;
         }
     }
+     
+    //definindo posição do navio diagonal 1
+    if (linha_navio_diagonal1 + 2 < 10 && coluna_navio_diagonal1 + 2 < 10) {
+        for (int i = 0; i < 3; i++) {
+            tabuleiro[linha_navio_diagonal1 + i][coluna_navio_diagonal1 + i] = navio_diagonal1[i];
+        }
+    }
+
 
     //definindo posição do navio diagonal 2
-    for (int i = 0; i < 3; i++) {
-        if (linha_navio_diagonal2 + coluna_navio_diagonal2 == 9) {
-            tabuleiro[linha_navio_diagonal2][coluna_navio_diagonal2] = navio_diagonal1[i];
-            linha_navio_diagonal2++;
-            coluna_navio_diagonal2--;
+    if (linha_navio_diagonal2 + 2 < 10 && coluna_navio_diagonal2 - 2 >= 0) {
+        for (int i = 0; i < 3; i++) {
+            tabuleiro[linha_navio_diagonal2 + i][coluna_navio_diagonal2 - i] = navio_diagonal2[i];
         }
     }
-
+    
     //loop externo printa o número da linha e entra no interno,
     //loop interno imprime o valor de '0' na linha toda até sua condição se tornar falsa e encerra;
     //loop externo se completa pulando a linha e começa de novo até sua condiçãi se tornar falsa
